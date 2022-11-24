@@ -1,30 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
+import { ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+ 
+
+//create client
+const client = new ApolloClient({
+  uri: 'graphql',
+  cache: new InMemoryCache(),
+})
+
 
 function App() {
   return (
-    <Router>
+    <ApolloProvider client={client}>
+      <Router>      
       <>
         <Navbar />
-        <Routes>
+        <Switch>
           <Route 
-            path='/' 
-            element={<SearchBooks />} 
+           exact path='/' 
+            component={SearchBooks} />       
+          <Route 
+           exact path='/saved' 
+            component={SavedBooks} 
           />
           <Route 
-            path='/saved' 
-            element={<SavedBooks />} 
+            render={() =>
+            <h1 className='display-2'>Wrong page!</h1>}
           />
-          <Route 
-            path='*'
-            element={<h1 className='display-2'>Wrong page!</h1>}
-          />
-        </Routes>
+        </Switch>
       </>
-    </Router>
+      </Router>
+    </ApolloProvider>
   );
 }
 
