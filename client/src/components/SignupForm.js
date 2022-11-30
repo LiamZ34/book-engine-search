@@ -34,7 +34,7 @@ const [addUser, { error }] = useMutation(ADD_USER);
 
     try {
       // const response = await createUser(userFormData);
-
+ console.log('im about to add user');
       const { data } = await addUser({
         variables: {...userFormData},
       });

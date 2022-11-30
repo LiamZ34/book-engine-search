@@ -26,21 +26,21 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client'));
 })
 
-// const startApolloServer = async(typeDefs, resolvers) => {
-//   await server.start()
-//   server.applyMiddleware({app})
-//   db.once('open', () => {
-//     app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-//   });
+const startApolloServer = async(typeDefs, resolvers) => {
+  await server.start()
+  server.applyMiddleware({app})
+  db.once('open', () => {
+    app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+  });
 
-// }
+}
 
 
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`Now Listening on localhost:${PORT}`)
-    console.log(`use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
-  })
-})
+// db.once('open', () => {
+//   app.listen(PORT, () => {
+//     console.log(`Now Listening on localhost:${PORT}`)
+//     console.log(`use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
+//   })
+// })
 
-// startApolloServer(typeDefs, resolvers);
+startApolloServer(typeDefs, resolvers);
