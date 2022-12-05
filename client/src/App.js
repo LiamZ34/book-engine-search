@@ -37,10 +37,10 @@ function App() {
         <Routes>
           <Route 
            exact path='/' 
-            component={SearchBooks} />       
+            element={<SearchBooks/>} />       
           <Route 
            exact path='/saved' 
-            component={SavedBooks} 
+            element={<SavedBooks/>} 
           />
           <Route 
             render={() =>
