@@ -2,7 +2,7 @@
 
 ## The Book Engine Search application was created using the MERN stack with a React front end, MongoDB database, and Node.js. This Application uses Google Books API search engine as a GraphQL API built with Apollo Server. The purpose of this Application is to give users the ability to search for books and save them to a created account.
 
-## Screenshots   
+## Screenshots    
 
 Here is what the application looks like 
 
